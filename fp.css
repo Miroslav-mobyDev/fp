@@ -53,7 +53,7 @@ ul{
 }
 .news_buttons{
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
 }
 .new_main_content{
     margin-left: 30px;
@@ -61,19 +61,31 @@ ul{
 
 }
 .news_button1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #0077B6;
     padding:10px 20px;
     color:#FFFFFF;
    border-radius: 8px;
    border:none;
    margin-right: 15px;
+   max-width: 100px;
+   max-height: 30px;
+   text-align: center;
 }
 .news_button2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #C1121F;
     padding:10px 20px;
     color:#FFFFFF;
    border-radius: 8px;
    border:none;
+   max-width: 100px;
+   max-height: 30px;
+   text-align: center;
 }
 .news_list {
     display: flex;

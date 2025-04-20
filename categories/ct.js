@@ -20,5 +20,31 @@ async function fetchAndRenderCategories() {
     console.error("Ошибка запроса", error);
   }
 }
+function setupActionButtons() {
+  const authToken = localStorage.getItem('authToken');
+  const headerAuth = document.querySelector('.header_button');
+
+  if (authToken && headerAuth) {
+    headerAuth.textContent = 'Выйти';
+    headerAuth.style.backgroundColor = '#C1121F';
+    headerAuth.style.padding = '10px 20px';
+    headerAuth.style.color = '#FFFFFF';
+    headerAuth.style.borderRadius = '8px';
+    headerAuth.style.border = 'none';
+    headerAuth.style.cursor = 'pointer';
+
+    headerAuth.removeAttribute('href'); 
+    headerAuth.addEventListener('click', logout);
+
+    displayCreateButton(); 
+  }
+}
+function logout() {
+  localStorage.removeItem('authToken');
+  window.location.href = '../auth/auth.html'; 
+}
+
+document.addEventListener('DOMContentLoaded', setupActionButtons);
+
 
 document.addEventListener("DOMContentLoaded", fetchAndRenderCategories);

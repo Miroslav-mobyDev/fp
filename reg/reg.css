@@ -1,0 +1,50 @@
+body {
+    margin: 0; 
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.registr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 500px;
+    min-height: 500px;
+    border: 1px solid #E6E6E6;
+    background-color: #ffffff;
+    
+    padding: 20px;
+    border-radius: 8px;
+}
+.auth_button{
+    width:400px;
+    background-color: #0077B6;
+    padding:10px 20px;
+    color:#FFFFFF;
+   border-radius: 8px;
+   border:none;
+}
+.password_block{
+    margin-bottom: 20px;
+}
+.email_input{
+    width:400px;
+    height:30px;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+}
+.password_input{
+    width:400px;
+    height:30px;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+}
+.name_input{
+    width:400px;
+    height:30px;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+}
