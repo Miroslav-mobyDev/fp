@@ -2,7 +2,8 @@ const BASE_URL = "https://webfinalapi.mobydev.kz/";
 
 async function fetchAndRenderNews() {
   try {
-    const response = await fetch(`${BASE_URL}news`);
+    const response = await fetch(`${BASE_URL}news?timestamp=${Date.now()}`);
+
     if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
 
     const newsArray = await response.json();
@@ -21,16 +22,18 @@ async function fetchAndRenderNews() {
           </div>
         </a>
         <div class="news_buttons">
-          <a class="news_button1" href="./edit/edit.html">Редактировать</a>
-          <a class="news_button2">Удалить</a>
+          <a class="news_button1" href="./edit/edit.html?id=${news.id}">Редактировать</a>
+          <button class="news_button2" data-id="${news.id}">Удалить</button>
         </div>
       </li>
     `).join('');
-    setupActionButtons();
+
+    setupActionButtons(); // Обработчики "выйти", "создать" и "удалить"
   } catch (error) {
     console.error("Ошибка запроса", error);
   }
 }
+
 function setupActionButtons() {
   const authToken = localStorage.getItem('authToken');
   const headerAuth = document.querySelector('.header_button');
@@ -49,6 +52,44 @@ function setupActionButtons() {
 
     displayCreateButton(); 
   }
+
+  
+  document.querySelectorAll('.news_button2').forEach(button => {
+    button.addEventListener('click', async (e) => {
+      const newsId = e.target.dataset.id;
+
+      if (!newsId) return;
+
+      if (!confirm('Вы уверены, что хотите удалить эту новость?')) return;
+
+      if (!authToken) {
+        alert('Вы не авторизованы');
+        return;
+      }
+
+      try {
+        const response = await fetch(`${BASE_URL}news/${newsId}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${authToken}`,
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          alert('Новость успешно удалена');
+          e.target.closest('.new').remove();
+        } else {
+          const error = await response.json();
+          console.error('Ошибка сервера:', error);
+          alert('Ошибка при удалении новости');
+        }
+      } catch (err) {
+        console.error('Ошибка сети:', err);
+        alert('Ошибка при удалении');
+      }
+    });
+  });
 }
 
 function logout() {
@@ -56,14 +97,13 @@ function logout() {
   window.location.href = './fp.html'; 
 }
 
-function displayCreateButton(){
+function displayCreateButton() {
   const existingButton = document.querySelector('.createButton');
   if (!existingButton) { 
     const createButton = document.createElement('button');
     createButton.className = "createButton";
     createButton.textContent = '+';
-    
-  
+
     createButton.style.backgroundColor = "green";
     createButton.style.color = "#fff";
     createButton.style.fontSize = "32px";
@@ -78,15 +118,19 @@ function displayCreateButton(){
     createButton.style.cursor = "pointer";
     createButton.title = "Создать новость";
 
-    
     createButton.onclick = () => {
       window.location.href = './create/create.html'; 
     };
 
-    
     document.body.appendChild(createButton);
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  fetchAndRenderNews();
+});
+
+
 
 
 document.addEventListener('DOMContentLoaded', setupActionButtons);
@@ -99,4 +143,4 @@ document.addEventListener('DOMContentLoaded', setupActionButtons);
 document.addEventListener("DOMContentLoaded", fetchAndRenderNews);
 
 
-
+    

@@ -1,0 +1,143 @@
+body{
+    background-color:  #FFFFFF;
+   
+    
+}
+ul{
+    list-style: none;
+}
+.button{
+    border: none;
+}
+.header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:40px; 
+    margin-bottom: 100px;
+}
+.header_menu{
+    display: flex;
+    align-items: center;
+    gap:20px;
+}
+.header_button{
+    background-color: #0077B6;
+    padding:10px 20px;
+    color:#FFFFFF;
+   border-radius: 8px;
+   border:none;
+}
+.header_link{
+    color: #3D3D3D;
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0px;
+    
+}
+.header_link:hover{
+  background-color: #F0F0F0;
+  border-radius: 5px;
+  padding:10px 20px;
+}
+.form_create{
+    margin: 0; 
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.create_new{
+    max-width: 1000px;
+    min-height: 740px;
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   
+}
+.create_input{
+    width:400px;
+    height:30px;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+}
+.file-upload {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #d3d3d3;
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .file-label {
+    background-color: #007BFF;
+    color: white;
+    padding: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  
+  .file-name {
+  padding: 8px;
+    font-size: 14px;
+    flex-grow: 1;
+    color: #000;
+    background-color: #d3d3d3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+.create_name{
+    display: flex;
+    flex-direction: column;
+   margin-bottom: 20px;
+} 
+.create_input_content{
+    width:400px;
+    height:200px;
+    border-radius: 8px;
+    border: 1px solid #E6E6E6;
+} 
+.custom-select {
+   width:100%;
+    min-width: 400px;
+    height: 30px;
+    
+    font-size: 14px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background-color: #fff;
+    color: #000;
+    appearance: none; 
+  
+    cursor: pointer;
+  }
+  
+  .custom-select:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    transition: all 0.3s ease-in-out;
+  }
+  .form_button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0077B6;
+    padding:10px 20px;
+    color:#FFFFFF;
+   border-radius: 8px;
+   border:none;
+   margin-right: 15px;
+   max-width: 300px;
+   max-height: 50px;
+   text-align: center;
+  }
